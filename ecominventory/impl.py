@@ -158,7 +158,7 @@ class ProductServiceImpl(ProductServices):
                         print(prod)
                         print("Updated Product Name Successfully.")
                 elif option == 2:
-                    prod.prodPrice = float(input(("Enter to modify product price:")))
+                    prod.prodPrice = float(input(("Enter to modify Product price:")))
                     productList.insert(prod.prodId, prod.prodPrice)
                     print(prod)
                     print("Updated Product Price Successfully")
