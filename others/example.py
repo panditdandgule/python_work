@@ -100,3 +100,68 @@ elif option==6:
 else:
     print('Incorrect option selected.')
 """
+
+
+import os.path
+import pickle
+
+from personservices import PersonServices,PersonInfo
+import sys
+
+
+class PersonServicesImpl(PersonServices):
+    filename='persondetails'
+    personDetails= {}
+
+
+    def add_person_details(self,details):
+        try:
+            if os.path.exists(PersonServicesImpl.filename) and os.path.getsize(PersonServicesImpl.filename)>0:
+                myPersonDetails=open(PersonServicesImpl.filename,'rb')
+                PersonServicesImpl.personDetails=pickle.load(myPersonDetails)#json.loads() takes in a string and returns a json object
+                myPersonDetails.close()
+            else:
+                myPersonDetails=open(PersonServicesImpl.filename,'wb')
+                PersonServicesImpl.personDetails= {} #json objects are surrounded by curly braces
+
+
+            PersonServicesImpl.personDetails[details[details.personId]]=details
+            myPersonDetails=open(PersonServicesImpl.filename,'wb')
+            pickle.dump(PersonServicesImpl.personDetails,myPersonDetails) #json.dumps() takes in in a json object and returns a string.
+            return PersonServicesImpl.personDetails.values()
+            myPersonDetails.close()
+
+            print("Person Details Added Successfully!")
+        except:
+            print("There was an error! Person Details was not added.")
+        finally:
+            myPersonDetails.close()
+
+
+    def display_all_persons(self):
+        if os.path.exists(PersonServicesImpl.filename) and os.path.getsize(PersonServicesImpl.filename)>0:
+            myPersonDetails=open(PersonServicesImpl.filename,'rb')
+            PersonServicesImpl.personDetails=pickle.load(myPersonDetails)
+            myPersonDetails.close()
+            if PersonServicesImpl.personDetails:
+                for record in PersonServicesImpl.personDetails.values():
+                    #print(record)
+                    print()
+                return PersonServicesImpl.personDetails.values()
+            myPersonDetails.close()
+        else:
+            print("No Record in Database")
+
+
+
+    def get_person_details(self,pid):
+        pass
+
+
+    def update_person_details(self,pid):
+        pass
+
+
+    def delete_person_details(self,pid):
+        pass
+
