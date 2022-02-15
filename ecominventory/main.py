@@ -6,22 +6,20 @@ from ecominventory.vendorinfo import Vendor
 
 def take_product_input():
     def take_vendor_input():
-        '''Take input from User and create Vendor Object'''
+        """Take input from User and create Vendor Object"""
         try:
             vid = int(input('Enter Vendor Id : '))
             vname = str(input('Enter Vendor Name : '))
             if vname.isdigit() or vname.isspace():
                 raise "unaccepted response.. please enter string only"
             vadr = str(input('Enter Vendor Address : '))
-            if vadr.isdigit() or len(vadr) > 4:
+            if vadr.isdigit() or len(vadr) < 4:
                 raise "unaccepted response.. please enter string only"
         except ValueError:
             print("Please enter integer value.")
-        except TypeError as e:
-            print("Letters only please.")
-        except:
-            print("Please enter valid input")
-        return Vendor(vid, vname, vadr)
+        except TypeError as msg:
+            print("Letters only please.", msg)
+        return Vendor(vid=vid, vnm=vname, vadr=vadr)
 
     '''Take input from user --> and create product object...'''
     try:
@@ -39,8 +37,8 @@ def take_product_input():
         return Product(pid=pid, pnm=pnam, pric=prc, pqty=pqty, pven=ven, pcat=cat)
     except ValueError:
         print("Value should be number")
-    except TypeError as e:
-        print("Letters only please.")
+    except TypeError as msg:
+        print("Letters only please ",msg)
     except:
         print("Please provide valid input")
 
@@ -63,8 +61,11 @@ if __name__ == '__main__':
                 12 Exit
        
         ''')
-
-        choice = int(input('Enter Your Choice : '))
+        try:
+            choice = int(input('Enter Your Choice : '))
+        except ValueError:
+            print("Enter Valid Choice..")
+            continue
         if choice == 1:
             product = take_product_input()
             prodService.add_product(product)
@@ -100,7 +101,7 @@ if __name__ == '__main__':
                 print("Please int value")
         elif choice == 9:
             try:
-                ven = input("Enter Vendor which vendor you want to search: ")
+                ven = input("Enter Vendor Name which vendor you want to search: ")
                 if ven.isdigit():
                     raise "unaccepted response"
                 print(prodService.search_by_vendor(ven))
@@ -123,4 +124,5 @@ if __name__ == '__main__':
 
         ch = input('Do you want to continue : Y/N')
         if ch.lower() in ['n', 'no']:
+            print("Thanks for visit..")
             break
