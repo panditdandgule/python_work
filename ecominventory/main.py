@@ -1,6 +1,6 @@
 import sys
-
-from ecominventory.impl import ProductServiceImpl, Product
+from myerror import MyError
+from ecominventory.impl import ProductServiceImpl, Product, ValueDivision
 from ecominventory.vendorinfo import Vendor
 
 
@@ -11,14 +11,16 @@ def take_product_input():
             vid = int(input('Enter Vendor Id : '))
             vname = str(input('Enter Vendor Name : '))
             if vname.isdigit() or vname.isspace():
-                raise "unaccepted response.. please enter string only"
+                raise MyError("unaccepted response.. please enter string only")
             vadr = str(input('Enter Vendor Address : '))
             if vadr.isdigit() or len(vadr) < 4:
-                raise "unaccepted response.. please enter string only"
+                raise MyError("unaccepted response.. please enter string only")
         except ValueError:
             print("Please enter integer value.")
         except TypeError as msg:
             print("Letters only please.", msg)
+        except MyError as err:
+            print(err.msg)
         return Vendor(vid=vid, vnm=vname, vadr=vadr)
 
     '''Take input from user --> and create product object...'''
@@ -26,25 +28,26 @@ def take_product_input():
         pid = int(input('Enter Product Id : '))
         pnam = str(input('Enter Product Name : '))
         if pnam.isdigit() or pnam.isspace():
-            raise "unaccepted response.. please enter string only"
-
+            raise MyError("Unaccepted response. Please enter valid product name")
         pqty = int(input('Enter Product Qty : '))
         prc = float(input('Enter Product Price : '))
         ven = take_vendor_input()
         cat = str(input('Enter Product Category : '))
         if cat.isdigit() or cat.isspace():
-            raise "unaccepted response.. please enter string only"
+            raise MyError("unaccepted response.. please enter string only")
         return Product(pid=pid, pnm=pnam, pric=prc, pqty=pqty, pven=ven, pcat=cat)
     except ValueError:
         print("Value should be number")
     except TypeError as msg:
-        print("Letters only please ",msg)
+        print("Letters only please ", msg)
+    except MyError as err:
+        print(err.msg)
     except:
         print("Please provide valid input")
 
 
 if __name__ == '__main__':
-    prodService = ProductServiceImpl()
+    prodService = ProductServiceImpl(ValueDivision)
     while True:
         print('''
                 1 Add_product
@@ -64,7 +67,7 @@ if __name__ == '__main__':
         try:
             choice = int(input('Enter Your Choice : '))
         except ValueError:
-            print("Enter Valid Choice..")
+            print("Enter Valid Choice. Please Try again..")
             continue
         if choice == 1:
             product = take_product_input()
@@ -78,6 +81,7 @@ if __name__ == '__main__':
                 print(prodService.delete_product(pid))
             except ValueError as v:
                 print("Please enter valid product id")
+
         elif choice == 4:
             prodList = prodService.get_all_product()
             print('Products', prodList)
@@ -89,10 +93,10 @@ if __name__ == '__main__':
             try:
                 cat = input("Enter category which one you want to search?")
                 if cat.isdigit():
-                    raise "Unaccepted response enter valid input"
+                    raise MyError("Unaccepted response enter valid input")
                 print(prodService.search_by_category(cat))
-            except:
-                print("Enter valid input")
+            except MyError as err:
+                print(err.msg)
         elif choice == 8:
             try:
                 pid = int(input("Enter Product Id which one you want to search:"))
@@ -103,10 +107,10 @@ if __name__ == '__main__':
             try:
                 ven = input("Enter Vendor Name which vendor you want to search: ")
                 if ven.isdigit():
-                    raise "unaccepted response"
+                    raise MyError("Unaccepted response. Please enter valid input")
                 print(prodService.search_by_vendor(ven))
-            except:
-                print("Please enter valid input")
+            except MyError as err:
+                print(err.msg)
         elif choice == 10:
             total = prodService.total_product_price()
             print("Total Price of Product:", total)
@@ -122,7 +126,12 @@ if __name__ == '__main__':
         else:
             print('Invalid Choice..')
 
-        ch = input('Do you want to continue : Y/N')
-        if ch.lower() in ['n', 'no']:
-            print("Thanks for visit..")
-            break
+        ch = str(input('Do you want to continue : Y/N'))
+        try:
+            if ch.lower() in ['n', 'no']:
+                if ch.isdigit() or ch.isspace():
+                    raise MyError("Unaccepted response please try again")
+                print("Thanks for visit..")
+                break
+        except MyError as err:
+            print(err.msg)

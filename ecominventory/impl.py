@@ -1,9 +1,18 @@
 import sys
 from ecominventory.services import ProductServices
 from ecominventory.productinfo import Product
+from myerror import MyError
 
 
-class ProductServiceImpl(ProductServices):
+class ValueDivision(Exception):
+    def __init__(self, arg):
+        self.msg = arg
+
+    def __str__(self):
+        return repr(self.msg)
+
+
+class ProductServiceImpl(ProductServices, ValueDivision):
     productList = []  # class level var --> ProductServiceImpl.productList
 
     def add_product(self, prod: Product):  # instance
@@ -11,7 +20,6 @@ class ProductServiceImpl(ProductServices):
             if type(prod) == Product:  # prod --> XXX : str --> validation --fail
                 if prod.prodId > 0:
                     if prod.prodPrice >= 100.0:
-
                         result = self.search_by_id(prod.prodId)  # Product or None
                         if result:
                             print('Product id already available')
@@ -25,20 +33,20 @@ class ProductServiceImpl(ProductServices):
                     print('Invalid Product Id')
             else:
                 print('Invalid Product Type....Product Cannot be added..')
+        except MyError as err:
+            print(err.msg)
         except:
             print("There was error product was not added.")
 
     def avg_product_price(self):
-        avgPrice = 0.0
         if ProductServiceImpl.productList:
             try:
                 totalProductPrice = self.total_product_price()
                 avgPrice = totalProductPrice / len(ProductServiceImpl.productList)
-                return avgPrice
             except:
                 print("There was an error while calculating average..")
-        else:
-            return avgPrice
+            else:
+                return avgPrice
 
     def delete_product(self, pid: int):
         try:
@@ -82,16 +90,16 @@ class ProductServiceImpl(ProductServices):
                     priceList.append(price.prodPrice)
                 print('Maximum Product Price Value:', max(priceList))
         except:
-            print("There was an error while calucalating max price")
+            print("There was an error while calculating max price")
 
     def search_by_category(self, cate: str):
         try:
             if ProductServiceImpl.productList:
-                prodcatList = []
+                prodcatlist = []
                 for cat in ProductServiceImpl.productList:
                     if cat.prodCategory == cate:
-                        prodcatList.append(cat)
-                return prodcatList
+                        prodcatlist.append(cat)
+                return prodcatlist
         except:
             print("There was an error while searching category..")
 
@@ -143,7 +151,7 @@ class ProductServiceImpl(ProductServices):
                     option = int(input(
                         '1. To modify name, 2. To modify price, '
                         '3. To modify vendor, ''4. To modify category '
-                        '5. To modify vendor name ''6. To modify vendor adress: '))
+                        '5. To modify vendor name ''6. To modify vendor address: '))
                     if option == str:
                         raise
                 except ValueError:
@@ -165,7 +173,7 @@ class ProductServiceImpl(ProductServices):
                             print(prod)
                             print("Updated Product Name Successfully.")
                     elif option == 2:
-                        prod.prodPrice = float(input(("Enter to modify Product price:")))
+                        prod.prodPrice = float(input("Enter to modify Product price:"))
                         productList.insert(prod.prodId, prod.prodPrice)
                         print(prod)
                         print("Updated Product Price Successfully")
@@ -175,7 +183,7 @@ class ProductServiceImpl(ProductServices):
                         print(prod)
                         print("Updated Vendor name successfully..")
                     elif option == 4:
-                        prod.prodCategory = input("Enter to modify product catogory")
+                        prod.prodCategory = input("Enter to modify product category")
                         productList.insert(prod.prodId, prod.prodCategory)
                         print(prod)
                         print("Updated prod category successfully.")
