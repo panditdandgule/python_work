@@ -2,10 +2,10 @@ import pickle
 import os
 
 data=[]
-filename='xyz'
+filename= 'xyz'
 
 if os.path.exists(filename) and os.path.getsize(filename)>0:
-    myfile=open('xyz','rb')
+    myfile=open('xyz', 'rb')
     newdata=pickle.load(myfile)
     myfile.close()
 else:

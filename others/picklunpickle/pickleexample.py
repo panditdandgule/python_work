@@ -1,7 +1,7 @@
 import os
 import pickle
 
-filename='newfile'
+filename= 'newfile'
 
 data=[10,20,30,40]
 
