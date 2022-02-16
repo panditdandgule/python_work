@@ -8,11 +8,6 @@ class PersonInfo:
         self.personEmail=pemail
         self.personContact=pcont
         self.personAdr=padr
-
-
-
-
-
     def __repr__(self):
         return str(self)
 
