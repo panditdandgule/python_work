@@ -1,5 +1,5 @@
 import sys
-
+from myerror import MyError
 from collegeassignment.addressinfo import Address
 from services import EmployeeServices
 from employeeinfo import Employee
@@ -11,6 +11,10 @@ def take_user_inputs():
             city = input("Enter City Name:")
             state = input("Enter State Name:")
             country = input("Enter Country Name:")
+            if city.isdigit() or state.isdigit() or country.isdigit():
+                raise MyError("Unaccepted response. Please enter string only")
+        except MyError as err:
+            print(err.msg)
         except TypeError as msg:
             print("Please Enter Valid Input", msg)
         return Address(city, state, country)
@@ -19,12 +23,14 @@ def take_user_inputs():
         empid = int(input("Enter Employee Id: "))
         empName = input("Enter Employee Name: ")
         if empName == empName.isdigit() or empName.isspace():
-            raise "Unaccepted response"
+            raise MyError("Unaccepted response")
         empAge = int(input("Enter Employee Age: "))
         empSalary = float(input("Enter Employee Salary: "))
         empAdr = take_emp_address()
     except ValueError as msg:
         print("Enter int value only..", msg)
+    except MyError as err:
+        print(err.msg)
     except:
         print("Please enter valid input.")
     return Employee(empid, empName, empAge, empSalary, empAdr)
@@ -36,7 +42,9 @@ class EmployeeServicesImpl(EmployeeServices):
     def add_employee(self):
         try:
             inputs = take_user_inputs()
-            if inputs.empId > 0:
+            if inputs.empId >0:
+                if inputs.empId<0:
+                    raise MyError("Unaccepted response. Employee id should be greater not less than zero")
                 result = self.get_employee(inputs.empId)
                 if result:
                     print("Id already available")
@@ -47,6 +55,8 @@ class EmployeeServicesImpl(EmployeeServices):
                     return EmployeeServicesImpl.employeeList
             else:
                 print("Employee id should not be zero..")
+        except MyError as err:
+            print(err.msg)
         except:
             print("Something went wrong.. Data was not added")
 
