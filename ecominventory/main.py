@@ -1,8 +1,11 @@
 import sys
+import logging
 from myerror import MyError
 from ecominventory.impl import ProductServiceImpl, Product, ValueDivision
 from ecominventory.vendorinfo import Vendor
 
+logging.basicConfig(filename='mylog.txt',level=logging.INFO)
+logging.info("A new request came")
 
 def take_product_input():
     def take_vendor_input():
@@ -21,6 +24,7 @@ def take_product_input():
             print("Letters only please.", msg)
         except MyError as err:
             print(err.msg)
+        logging.exception(err.msg)
         return Vendor(vid=vid, vnm=vname, vadr=vadr)
 
     '''Take input from user --> and create product object...'''
@@ -36,14 +40,16 @@ def take_product_input():
         if cat.isdigit() or cat.isspace():
             raise MyError("unaccepted response.. please enter string only")
         return Product(pid=pid, pnm=pnam, pric=prc, pqty=pqty, pven=ven, pcat=cat)
-    except ValueError:
+    except ValueError as msg:
         print("Value should be number")
+        logging.exception(msg)
     except TypeError as msg:
         print("Letters only please ", msg)
     except MyError as err:
         print(err.msg)
     except:
         print("Please provide valid input")
+    logging.info("Request processing completed")
 
 
 if __name__ == '__main__':
