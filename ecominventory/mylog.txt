@@ -1,0 +1,32 @@
+INFO:root:A new request came
+ERROR:root:invalid literal for int() with base 10: 'd'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/ecominventory/main.py", line 32, in take_product_input
+    pid = int(input('Enter Product Id : '))
+ValueError: invalid literal for int() with base 10: 'd'
+INFO:root:Request processing completed
+ERROR:root:invalid literal for int() with base 10: 'a'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/ecominventory/main.py", line 32, in take_product_input
+    pid = int(input('Enter Product Id : '))
+ValueError: invalid literal for int() with base 10: 'a'
+INFO:root:Request processing completed
+ERROR:root:invalid literal for int() with base 10: 'tyu'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/ecominventory/main.py", line 36, in take_product_input
+    pqty = int(input('Enter Product Qty : '))
+ValueError: invalid literal for int() with base 10: 'tyu'
+INFO:root:Request processing completed
+ERROR:root:could not convert string to float: 'kj'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/ecominventory/main.py", line 37, in take_product_input
+    prc = float(input('Enter Product Price : '))
+ValueError: could not convert string to float: 'kj'
+INFO:root:Request processing completed
+INFO:root:Request processing completed
+ERROR:root:unaccepted response.. please enter string only
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/ecominventory/main.py", line 17, in take_vendor_input
+    raise MyError("unaccepted response.. please enter string only")
+myerror.MyError: unaccepted response.. please enter string only
+INFO:root:Request processing completed
