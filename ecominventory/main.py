@@ -9,10 +9,10 @@ def take_product_input():
         """Take input from User and create Vendor Object"""
         try:
             vid = int(input('Enter Vendor Id : '))
-            vname = str(input('Enter Vendor Name : '))
+            vname = str(input('Enter Vendor Name : ')).title()
             if vname.isdigit() or vname.isspace():
                 raise MyError("unaccepted response.. please enter string only")
-            vadr = str(input('Enter Vendor Address : '))
+            vadr = str(input('Enter Vendor Address : ')).title()
             if vadr.isdigit() or len(vadr) < 4:
                 raise MyError("unaccepted response.. please enter string only")
         except ValueError:
@@ -26,13 +26,13 @@ def take_product_input():
     '''Take input from user --> and create product object...'''
     try:
         pid = int(input('Enter Product Id : '))
-        pnam = str(input('Enter Product Name : '))
+        pnam = str(input('Enter Product Name : ')).title()
         if pnam.isdigit() or pnam.isspace():
             raise MyError("Unaccepted response. Please enter valid product name")
         pqty = int(input('Enter Product Qty : '))
         prc = float(input('Enter Product Price : '))
         ven = take_vendor_input()
-        cat = str(input('Enter Product Category : '))
+        cat = str(input('Enter Product Category : ')).upper()
         if cat.isdigit() or cat.isspace():
             raise MyError("unaccepted response.. please enter string only")
         return Product(pid=pid, pnm=pnam, pric=prc, pqty=pqty, pven=ven, pcat=cat)
@@ -65,7 +65,11 @@ if __name__ == '__main__':
                 13 Product Quantity
                 14 Display All Product Quantity
                 15 Withdraw Product Quantity
-                16 Exit
+                16 All Product Category List
+                17 All Vendors List
+                18 All Products List By Vendor
+                19 Display Vendor Address
+                20 Exit
        
         ''')
         try:
@@ -85,6 +89,7 @@ if __name__ == '__main__':
                 print(prodService.delete_product(pid))
             except ValueError as v:
                 print("Please enter valid product id")
+                continue
 
         elif choice == 4:
             prodList = prodService.get_all_product()
@@ -101,12 +106,14 @@ if __name__ == '__main__':
                 print(prodService.search_by_category(cat))
             except MyError as err:
                 print(err.msg)
+                continue
         elif choice == 8:
             try:
                 pid = int(input("Enter Product Id which one you want to search:"))
                 print(prodService.search_by_id(pid))
             except ValueError as v:
                 print("Please int value")
+                continue
         elif choice == 9:
             try:
                 ven = input("Enter Vendor Name which vendor you want to search: ")
@@ -115,6 +122,7 @@ if __name__ == '__main__':
                 print(prodService.search_by_vendor(ven))
             except MyError as err:
                 print(err.msg)
+                continue
         elif choice == 10:
             total = prodService.total_product_price()
             print("Total Price of Product:", total)
@@ -124,18 +132,32 @@ if __name__ == '__main__':
                 prodService.update_product(pid)
             except ValueError as v:
                 print("Please enter int value only", v)
-        elif choice==12:
+                continue
+        elif choice == 12:
 
             print(prodService.product_names())
-        elif choice==13:
-            pname=input("Enter product name: ")
+        elif choice == 13:
+            pname = input("Enter product name: ")
             print(prodService.product_quantity(pname))
-        elif choice==14:
+        elif choice == 14:
             print(prodService.display_all_product_quantity())
-        elif choice==15:
-            pname=input("Please enter which product you want to buy..")
+        elif choice == 15:
+            pname = input("Please enter which product you want to buy..")
             prodService.withdraw_product_quantity(pname)
         elif choice == 16:
+            print("All Product Category List: ")
+            print(prodService.all_product_category_list())
+        elif choice == 17:
+            print("All Vendor Name List:")
+            print(prodService.all_vendors_list())
+        elif choice == 18:
+            vname = input("Enter Vendor Name which one want to see products: ").title()
+            print("All Products with Vendor Names")
+            print(prodService.all_products_by_vendor(vname))
+        elif choice == 19:
+            vname = input("Enter Vendor Name:").title()
+            print(prodService.display_vendor_address(vname))
+        elif choice == 20:
             print("Thanks for using Inventory Application..")
             sys.exit(0)
         else:
@@ -146,6 +168,7 @@ if __name__ == '__main__':
             if ch.lower() in ['n', 'no']:
                 if ch.isdigit() or ch.isspace():
                     raise MyError("Unaccepted response please try again")
+                    continue
                 print("Thanks for visit..")
                 break
         except MyError as err:

@@ -2,6 +2,7 @@ import sys
 from ecominventory.services import ProductServices
 from ecominventory.productinfo import Product
 from myerror import MyError
+from collections import defaultdict
 
 
 class ValueDivision(Exception):
@@ -15,6 +16,7 @@ class ValueDivision(Exception):
 class ProductServiceImpl(ProductServices, ValueDivision):
     productList = []  # class level var --> ProductServiceImpl.productList
     allproduct = {}
+    productsVendor = {'Flipkart': [], 'Amazon': []}
 
     def add_product(self, prod: Product):  # instance
         try:
@@ -264,3 +266,56 @@ class ProductServiceImpl(ProductServices, ValueDivision):
                     print(str(pname).title(), "Available quantity After Selling: ", ProductServiceImpl.allproduct)
         except:
             print("There was an error while withdrawing product..")
+
+    def all_product_category_list(self):
+        try:
+            categoryNames = []
+            if ProductServiceImpl.productList:
+                for cat in ProductServiceImpl.productList:
+                    if cat.prodCategory:
+                        categoryNames.append(cat.prodCategory)
+                return categoryNames
+
+        except:
+            print("While listing all product category.. There was an error..")
+
+    def all_vendors_list(self):
+        try:
+            vendorsList = []
+            if ProductServiceImpl.productList:
+                for vendr in ProductServiceImpl.productList:
+                    if vendr.prodVendor.vendorName:
+                        vendorsList.append(vendr.prodVendor.vendorName)
+            return vendorsList
+
+        except:
+            print("There was an error while searching vendor list")
+
+    def all_products_by_vendor(self, vname):
+        try:
+            if ProductServiceImpl.productList:
+                for prod in ProductServiceImpl.productList:
+                    if prod.prodVendor.vendorName == vname:
+                        if prod.prodVendor.vendorName in ProductServiceImpl.productsVendor:
+                            ProductServiceImpl.productsVendor[prod.prodVendor.vendorName].append(prod.prodName)
+
+                    # ProductServiceImpl.productsVendor[prod.prodVendor.vendorName]=ProductServiceImpl.productsVendor.setdefault(prod.prodVendor.vendorName,[].append(prod.prodName))
+                    # ProductServiceImpl.productsVendor[prod.prodVendor.vendorName].append(prod.prodName)
+
+                return ProductServiceImpl.productsVendor
+        except:
+            print("There was an error while fetching details..")
+
+    def display_vendor_address(self, vname):
+        try:
+            vendorAddress = {'Flipkart': [], 'Amazon': []}
+            if ProductServiceImpl.productList:
+                for prod in ProductServiceImpl.productList:
+                    if prod.prodVendor.vendorName == vname:
+                        if prod.prodVendor.vendorName in vendorAddress:
+                            vendorAddress[prod.prodVendor.vendorName].append(prod.vendorAddr)
+                return vendorAddress
+
+
+        except:
+            print("There was an error while displaying address..")

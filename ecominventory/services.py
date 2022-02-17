@@ -64,3 +64,19 @@ class ProductServices(ABC):  # Abstract Base Classes -->
     @abstractmethod
     def withdraw_product_quantity(self):
         pass
+
+    @abstractmethod
+    def all_product_category_list(self):
+        pass
+
+    @abstractmethod
+    def all_vendors_list(self):
+        pass
+
+    @abstractmethod
+    def all_products_by_vendor(self):
+        pass
+
+    @abstractmethod
+    def display_vendor_address(self):
+        pass
