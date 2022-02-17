@@ -14,6 +14,7 @@ class ValueDivision(Exception):
 
 class ProductServiceImpl(ProductServices, ValueDivision):
     productList = []  # class level var --> ProductServiceImpl.productList
+    allproduct = {}
 
     def add_product(self, prod: Product):  # instance
         try:
@@ -201,3 +202,65 @@ class ProductServiceImpl(ProductServices, ValueDivision):
                         print('Incorrect option selected.')
         except:
             print("There was an error while updating data..")
+
+    def product_names(self):
+        try:
+            productNames = []
+            if ProductServiceImpl.productList:
+                for prodnames in ProductServiceImpl.productList:
+                    productNames.append(prodnames.prodName)
+                return productNames
+        except:
+            print("There was an error while searching product names")
+
+    def product_quantity(self, pname):
+        try:
+            quantity = {}
+            totalQty = 0
+            if ProductServiceImpl.productList:
+                for qty in ProductServiceImpl.productList:
+
+                    if qty.prodName == pname:
+                        totalQty += qty.prodQty
+                        quantity[pname] = totalQty
+                    else:
+                        print("Product is not available..")
+            return quantity
+
+        except:
+            print("There was an error while displaying quantity..")
+
+    def display_all_product_quantity(self):
+        try:
+
+            if ProductServiceImpl.productList:
+                for product in ProductServiceImpl.productList:
+                    ProductServiceImpl.allproduct[product.prodName] = ProductServiceImpl.allproduct.get(
+                        product.prodName, 0) + product.prodQty
+                for product, prodval in ProductServiceImpl.allproduct.items():
+                    print(str(product).title(), "Available Quantity is:", prodval)
+                return ProductServiceImpl.allproduct
+
+        except:
+            print("There was an error while displaying all products..")
+
+    def withdraw_product_quantity(self, pname):
+        try:
+
+            if ProductServiceImpl.productList:
+                withdrawproduct = int(input("Please Enter How many products you want to buy? "))
+                totalproduct = self.product_quantity(pname)
+                print(str(pname).title(), "Available Quantity: ", totalproduct)
+                try:
+                    if len(totalproduct.values()) < 0:
+                        raise MyError("Product is not available for selling..")
+                except MyError as err:
+                    print(err.msg)
+                else:
+                    for key, value in totalproduct.items():
+                        if key == pname:
+                            ProductServiceImpl.allproduct[key] = ProductServiceImpl.allproduct.get(key,
+                                                                                                   0) - withdrawproduct
+                    print(str(pname).title(), "Available quantity After Selling: ", ProductServiceImpl.allproduct)
+        except:
+            print("There was an error while withdrawing product..")

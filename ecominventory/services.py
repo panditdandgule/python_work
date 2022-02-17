@@ -48,3 +48,19 @@ class ProductServices(ABC):  # Abstract Base Classes -->
     @abstractmethod
     def update_product(self, pid: int, prod: Product) -> Product:
         pass
+
+    @abstractmethod
+    def product_names(self):
+        pass
+
+    @abstractmethod
+    def product_quantity(self):
+        pass
+
+    @abstractmethod
+    def display_all_product_quantity(self):
+        pass
+
+    @abstractmethod
+    def withdraw_product_quantity(self):
+        pass

@@ -61,7 +61,11 @@ if __name__ == '__main__':
                 9 Search_by_vendor
                 10 Total_product_price
                 11 Update_product
-                12 Exit
+                12 Product Names
+                13 Product Quantity
+                14 Display All Product Quantity
+                15 Withdraw Product Quantity
+                16 Exit
        
         ''')
         try:
@@ -120,7 +124,18 @@ if __name__ == '__main__':
                 prodService.update_product(pid)
             except ValueError as v:
                 print("Please enter int value only", v)
-        elif choice == 12:
+        elif choice==12:
+
+            print(prodService.product_names())
+        elif choice==13:
+            pname=input("Enter product name: ")
+            print(prodService.product_quantity(pname))
+        elif choice==14:
+            print(prodService.display_all_product_quantity())
+        elif choice==15:
+            pname=input("Please enter which product you want to buy..")
+            prodService.withdraw_product_quantity(pname)
+        elif choice == 16:
             print("Thanks for using Inventory Application..")
             sys.exit(0)
         else:
