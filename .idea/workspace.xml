@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78f2a757-5d0c-4bf0-9643-db1633c2a595" name="Changes" comment="log and data file added.">
-      <change beforePath="$PROJECT_DIR$/productfiles/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/productfiles/main.py" afterDir="false" />
+    <list default="true" id="78f2a757-5d0c-4bf0-9643-db1633c2a595" name="Changes" comment="studdata added through files.">
+      <change afterPath="$PROJECT_DIR$/employeedatafiles/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/employeedatafiles/empinfo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/employeedatafiles/empmain.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/employeedatafiles/imple.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prodcsvdata/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prodcsvdata/prodinfo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prodcsvdata/readprodinfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +56,8 @@
       <recent name="F:\Scoopons\python_work\python_work\others" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
-    <configuration name="ex" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.readprodinfo">
+    <configuration name="empmain" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python_work" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -58,32 +65,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ecominventory" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/employeedatafiles" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ecominventory/ex.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="impl" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="python_work" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ecominventory" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ecominventory/impl.py" />
+      <option name="SCRIPT_NAME" value="F:\Scoopons\python_work\python_work\employeedatafiles\empmain.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -113,7 +99,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python_work" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -121,11 +107,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ecominventory" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/studdata" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ecominventory/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/studdata/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,7 +120,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="products" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="prodinfo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python_work" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -142,11 +128,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/productfiles" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/prodcsvdata" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/productfiles/products.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prodcsvdata/prodinfo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="readprodinfo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="python_work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/prodcsvdata" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prodcsvdata/readprodinfo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,11 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.readprodinfo" />
+        <item itemvalue="Python.prodinfo" />
+        <item itemvalue="Python.empmain" />
+        <item itemvalue="Python.main (2)" />
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.products" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.ex" />
-        <item itemvalue="Python.impl" />
       </list>
     </recent_temporary>
   </component>
@@ -335,7 +342,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645183689058</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="updated file.">
+      <created>1645184718576</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1645184718576</updated>
+    </task>
+    <task id="LOCAL-00025" summary="studdata added through files.">
+      <created>1645186320722</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1645186320725</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,7 +390,9 @@
     <MESSAGE value="added logging info" />
     <MESSAGE value="added product list data to the files." />
     <MESSAGE value="log and data file added." />
-    <option name="LAST_COMMIT_MESSAGE" value="log and data file added." />
+    <MESSAGE value="updated file." />
+    <MESSAGE value="studdata added through files." />
+    <option name="LAST_COMMIT_MESSAGE" value="studdata added through files." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
