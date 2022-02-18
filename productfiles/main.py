@@ -1,11 +1,11 @@
 import os
+import datetime
+import stat
 
 from products import Product
 from implementation import ProductImplementation
 import logging
 logging.basicConfig(filename='mylog.txt',level=logging.INFO)
-
-
 logging.info("A new request came")
 
 def take_user_inputs():
