@@ -1,0 +1,24 @@
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+ERROR:root:invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/productjsonfile/prodmain.py", line 11, in take_user_inputs
+    qty=int(input("Enter product quantity"))
+ValueError: invalid literal for int() with base 10: ''
+INFO:root:The process completed succesfully
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
