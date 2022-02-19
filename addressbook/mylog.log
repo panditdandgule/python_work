@@ -1,0 +1,42 @@
+INFO:root:The new request came
+ERROR:root:invalid literal for int() with base 10: 'pune'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/addressbook/contacts.py", line 28, in get_user_inputs
+    self.phone=int(input("Enter Address: "))
+ValueError: invalid literal for int() with base 10: 'pune'
+INFO:root:The new request came
+ERROR:root:invalid literal for int() with base 10: 'kjl'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/addressbook/contacts.py", line 28, in get_user_inputs
+    self.phone=int(input("Enter Address: "))
+ValueError: invalid literal for int() with base 10: 'kjl'
+INFO:root:The new request came
+ERROR:root:invalid literal for int() with base 10: 'kj'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/addressbook/contacts.py", line 28, in get_user_inputs
+    self.phone=int(input("Enter Address: "))
+ValueError: invalid literal for int() with base 10: 'kj'
+INFO:root:The new request came
+ERROR:root:invalid literal for int() with base 10: 'jl'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/addressbook/contacts.py", line 28, in get_user_inputs
+    self.phone=int(input("Enter Address: "))
+ValueError: invalid literal for int() with base 10: 'jl'
+INFO:root:The new request came
+INFO:root:The new request came
+ERROR:root:invalid literal for int() with base 10: 'pune'
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/addressbook/contacts.py", line 28, in get_user_inputs
+    self.phone=int(input("Enter Address: "))
+ValueError: invalid literal for int() with base 10: 'pune'
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+INFO:root:The new request came
+ERROR:root:invalid literal for int() with base 10: '9623646742x'
+Traceback (most recent call last):
+  File "F:\Scoopons\python_work\python_work\addressbook\contacts.py", line 28, in get_user_inputs
+    self.contacts['Phone'] = int(input('Enter Contact\'s Phone Number: '))
+ValueError: invalid literal for int() with base 10: '9623646742x'
