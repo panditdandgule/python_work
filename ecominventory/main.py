@@ -13,18 +13,17 @@ def take_product_input():
         try:
             vid = int(input('Enter Vendor Id : '))
             vname = str(input('Enter Vendor Name : ')).title()
-            if vname.isdigit() or vname.isspace():
-                raise MyError("unaccepted response.. please enter string only")
             vadr = str(input('Enter Vendor Address : ')).title()
-            if vadr.isdigit() or len(vadr) < 4:
-                raise MyError("unaccepted response.. please enter string only")
+            if vadr.isdigit():
+                raise MyError("Unaccepted response")
+
         except ValueError:
             print("Please enter integer value.")
         except TypeError as msg:
             print("Letters only please.", msg)
         except MyError as err:
             print(err.msg)
-        logging.exception(err.msg)
+
         return Vendor(vid=vid, vnm=vname, vadr=vadr)
 
     '''Take input from user --> and create product object...'''
@@ -32,7 +31,7 @@ def take_product_input():
         pid = int(input('Enter Product Id : '))
         pnam = str(input('Enter Product Name : ')).title()
         if pnam.isdigit() or pnam.isspace():
-            raise MyError("Unaccepted response. Please enter valid product name")
+            raise "Unaccepted response. Please enter valid product name"
         pqty = int(input('Enter Product Qty : '))
         prc = float(input('Enter Product Price : '))
         ven = take_vendor_input()
@@ -45,8 +44,7 @@ def take_product_input():
         logging.exception(msg)
     except TypeError as msg:
         print("Letters only please ", msg)
-    except MyError as err:
-        print(err.msg)
+
     except:
         print("Please provide valid input")
     logging.info("Request processing completed")

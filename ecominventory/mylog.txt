@@ -30,3 +30,38 @@ Traceback (most recent call last):
     raise MyError("unaccepted response.. please enter string only")
 myerror.MyError: unaccepted response.. please enter string only
 INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:A new request came
+INFO:root:A new request came
+INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:A new request came
+INFO:root:A new request came
+INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:Request processing completed
+INFO:root:A new request came
+INFO:root:A new request came
+INFO:root:A new request came
+ERROR:root:Unaccepted response
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/ecominventory/main.py", line 18, in take_vendor_input
+    raise MyError("Unaccepted response")
+myerror.MyError: Unaccepted response
+INFO:root:A new request came
+ERROR:root:Unaccepted response
+Traceback (most recent call last):
+  File "F:/Scoopons/python_work/python_work/ecominventory/main.py", line 18, in take_vendor_input
+    raise MyError("Unaccepted response")
+myerror.MyError: Unaccepted response
+INFO:root:A new request came

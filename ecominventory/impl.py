@@ -21,6 +21,7 @@ class ProductServiceImpl(ProductServices, ValueDivision):
     def add_product(self, prod: Product):  # instance
         try:
             if type(prod) == Product:  # prod --> XXX : str --> validation --fail
+
                 if prod.prodId > 0:
                     if prod.prodPrice >= 100.0:
                         result = self.search_by_id(prod.prodId)  # Product or None
