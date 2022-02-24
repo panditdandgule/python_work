@@ -7,7 +7,7 @@ try:
                         port=3305,
                         database='pythontest')
     cursor=con.cursor()
-    sql="insert into employees values(:eno,:ename,:esal,:eaddr)"
+    sql="insert into employees values (:eno,:ename,:esal,:eaddr)"
     records=([(200,'sunny',30000,'Pune'),
               (201,'pandit',40000,'Pune'),
               (202,'bali',25000,'Mumbai')])
