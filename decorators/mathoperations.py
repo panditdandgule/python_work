@@ -1,12 +1,10 @@
 import time
 
-
 def print_star(funcref):
     def inner_func(*args):
         print("**" * 40)
         return funcref(*args)
         print("**" * 40)
-
     return inner_func
 
 
@@ -83,6 +81,6 @@ def divide_numbers(*args):
 
 
 print("Addition Of Numbers: ", add_numbers(10, 20, 30, 40))
-print("Subtraction Of Numbers:", substract_numbers(20, 10, 5, 2))
-print("Multiplication Of Numbers:", multiply_numbers(10, 20, 30, 40, 50))
+print("Subtraction Of Numbers: ", substract_numbers(20, 10, 5, 2))
+print("Multiplication Of Numbers: ", multiply_numbers(10, 20, 30, 40, 50))
 print("Division Of Numbers: ", divide_numbers(5, 10, 20, 30, 40))
