@@ -1,6 +1,6 @@
 import itertools
 
-help(itertools.chain)
+#help(itertools.chain)
 
 x=[[1,2],[3,4]]
 
