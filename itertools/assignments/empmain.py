@@ -13,8 +13,11 @@ if __name__ == '__main__':
 
     # print(emp_list)
     def get_employees_by_dept(dept):
-        result = list(filter(lambda emp: emp.empDept == dept, emp_list))
-        return result
+        #result = list(filter(lambda emp: emp.empDept == dept, emp_list))
+        result=groupby(emp_list,lambda emp:emp.empDept==dept)
+        for key,lst in result:
+            print(key,list(lst))
+        #return result
 
 
     def get_employee_by_role(role):
@@ -49,13 +52,32 @@ if __name__ == '__main__':
                 gender_list.append(item)
         print("Gender: ", gender_list)
 
+    def get_max_skill():
+        mxskill_list=[]
+        for item in emp_list:
+            mxskill=item.empSkill
+            mxskill.append(item.empName)
+            mxskill_list.append(item.empSkill)
+        mxskiter=groupby(mxskill_list,lambda x:len(x))
 
-    print("-"*20,"FIND DEPARTMENT","-"*20)
-    print(get_employees_by_dept('TEST'))
-    print("-"*20,"FIND EMPLOYEE ROLE","-"*20)
-    print(get_employee_by_role('MANAGER'))
-    print("-"*20,"FIND MAX SALARY","-"*20)
-    print(get_employee_max_salary('MANAGER'))
-    #print(get_max_skills())
-    print(get_rating_list())
-    print(group_by_gender(0))
+        maxskillset=[]
+        for key,val in mxskiter:
+            print(key,list(val))
+            maxskillset.append(key)
+
+        print(mxskill_list)
+
+
+
+
+
+
+    #print("-"*20,"FIND DEPARTMENT","-"*20)
+    #print(get_employees_by_dept('JAVA'))
+    # print("-"*20,"FIND EMPLOYEE ROLE","-"*20)
+    # print(get_employee_by_role('MANAGER'))
+    # print("-"*20,"FIND MAX SALARY","-"*20)
+    # print(get_employee_max_salary('MANAGER'))
+    print(get_max_skill())
+    # print(get_rating_list())
+    # print(group_by_gender(0))
